@@ -1,4 +1,5 @@
-package pack8;
+package string;
+
 public class stringDemo {
 
 	public static void main(String[] args) {
@@ -87,3 +88,4 @@ public class stringDemo {
         System.out.println(sbl);              		
 	}
 }
+

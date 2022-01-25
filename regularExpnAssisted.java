@@ -1,4 +1,4 @@
-package pack10;
+package RegularExpression;
 import java.util.regex.*;
 
 public class regularExpnAssisted {
@@ -14,5 +14,3 @@ public static void main(String[] args) {
       	System.out.println( check.substring( c.start(), c.end() ) );
 	}
 }
-
-
