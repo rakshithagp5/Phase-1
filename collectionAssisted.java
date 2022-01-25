@@ -1,4 +1,4 @@
-package pack6;
+package collections;
 import java.util.*;
 
 public class collectionAssisted {
@@ -51,4 +51,6 @@ public class collectionAssisted {
 	      	} 
 	      }  
 	}
+
+
 

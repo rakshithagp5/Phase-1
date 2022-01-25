@@ -1,4 +1,5 @@
-package pack5;
+package constructors;
+
 //parameterized constructor
 class Std{
 	int id;
@@ -14,4 +15,3 @@ class Std{
 	System.out.println(id+" "+name);
 	}
 }
-

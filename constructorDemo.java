@@ -1,4 +1,4 @@
-package pack5;
+package constructors;
 public class constructorDemo {
 
 public static void main(String[] args) {
@@ -10,4 +10,3 @@ public static void main(String[] args) {
 	emp2.display();
 	}
 }
-

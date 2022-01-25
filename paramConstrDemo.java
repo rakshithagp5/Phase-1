@@ -1,4 +1,5 @@
-package pack5;
+package constructors;
+
 public class paramConstrDemo {
 public static void main(String[] args) {
 
@@ -8,5 +9,4 @@ public static void main(String[] args) {
 	std2.display();
 		}
 }
-
 

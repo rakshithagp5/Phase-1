@@ -1,17 +1,11 @@
-package pack5;
+package constructors;
 //default constructor
 class EmpInfo{
 	int id;
 	String name;
-	
-	EmpInfo()
-	{
-	
-	}
 
 void display() {
 	System.out.println(id+" "+name);
 	}
 }
-
 

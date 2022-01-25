@@ -1,4 +1,4 @@
-package pack9;
+package Arrays;
 public class arrayAssisted {
 
 public static void main(String[] args) {
@@ -18,4 +18,5 @@ int[][] b = {
       System.out.println("\nLength of row 1: " + b[0].length);
       }
 }
+
 
