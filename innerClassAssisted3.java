@@ -1,4 +1,6 @@
-package pack7;
+package InnerClasses;
+
+
 public class innerClassAssisted3 {
 
 	public static void main(String[] args) {
@@ -13,10 +15,14 @@ public class innerClassAssisted3 {
 	}
 
 
-
 //anonymous inner class
 abstract class AnonymousInnerClass {
 	   public abstract void display();
 	}
+
+
+
+
+
 
 

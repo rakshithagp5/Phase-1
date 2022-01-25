@@ -1,4 +1,4 @@
-package pack4;
+package methods;
 //method overloading
 public class overloadMethod {
 	

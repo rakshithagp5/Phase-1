@@ -1,6 +1,4 @@
-package pack4;
-
-
+package methods;
 //call by value
 public class callMethod {
 

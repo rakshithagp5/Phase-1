@@ -1,4 +1,6 @@
-package pack4;
+package methods;
+
+
 
 public class methodExecution {
 	//method demo

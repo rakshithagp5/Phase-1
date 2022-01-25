@@ -1,4 +1,7 @@
-package pack7;
+package InnerClasses;
+
+
+
 public class innerClassAssisted2 {
 
 private String msg="Inner Classes";
@@ -20,4 +23,3 @@ public static void main(String[] args) {
 	ob.display();  
 	}
 }
-

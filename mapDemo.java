@@ -1,4 +1,4 @@
-package pack7b;
+package Map;
 import java.util.*;
 public class mapDemo {
 
@@ -45,4 +45,6 @@ public class mapDemo {
 	      
 	   }  
 }
+
+
 

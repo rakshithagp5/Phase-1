@@ -1,4 +1,5 @@
-package pack7;
+package InnerClasses;
+
 
 public class innerClassAssisted1 {
 
@@ -16,5 +17,12 @@ public class innerClassAssisted1 {
 		in.hello();  
 	}
 }
+
+
+
+
+
+
+
 
 
