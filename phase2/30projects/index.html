@@ -5,10 +5,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="AccountDashboard?userid=johndoe">Account Dashboard (allow filter)</a><br>
-        <a href="AccountProfile?userid=johndoe">Account Profile (allow filter)</a><br>
-        <a href="AccountDashboard">Account Dashboard (block filter)</a><br>
-        <a href="InfoPage">Info Page </a><br>
+<form action="Login" method="post">
+                <input type=hidden name="userid" id="userid" value="admin">
+          <button>Dashboard with hidden form fields login</button>
+        </form>
+        <br><br>  
+        <a href="Dashboard">Dashboard without hidden form fields login</a>
 
 </body>
 </html>
