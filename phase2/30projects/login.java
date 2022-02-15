@@ -29,11 +29,10 @@ public class login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
         String userId = request.getParameter("userid");
-        HttpSession session=request.getSession(); 
-        session.setAttribute("userid",  userId);
-        
-        response.sendRedirect("dashboard");  
-
+        HttpSession session=request.getSession();  
+    session.setAttribute("userid",  userId);
+                 
+    response.sendRedirect("dashboard");  
 }
 
 	/**

@@ -31,12 +31,12 @@ public class Dashboard extends HttpServlet {
 		// TODO Auto-generated method stub
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
+        
         String userId = request.getParameter("userid");
-        if (userId == null) {
-            out.println("No UserId was found in hidden form field.<br>");
+        if (userId == null ) {
+            out.println("No UserId was found in the URL.<br>");
         } else {
-            out.println("UserId found in hidden form field: " + userId + "<br>");
-            
+            out.println("UserId obtained from URL Rewriting:" + userId + "<br>");
         }
         out.println("</body></html>");
 }

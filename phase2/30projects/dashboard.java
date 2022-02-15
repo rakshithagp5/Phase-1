@@ -30,7 +30,7 @@ public class dashboard extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		PrintWriter out = response.getWriter();
+        PrintWriter out = response.getWriter();
         out.println("<html><body>");
         
         HttpSession session=request.getSession(false);  
@@ -41,10 +41,9 @@ public class dashboard extends HttpServlet {
             out.println("No UserId was found in session.<br>");
         } else {
             out.println("UserId obtained from session :" + userId + "<br>");
-            out.println("<a href='logout'>Logout of session</a><br>");
         }
         out.println("</body></html>");
-	}
+}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

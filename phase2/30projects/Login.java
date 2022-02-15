@@ -1,8 +1,6 @@
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,16 +27,8 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-           
-        String userId = request.getParameter("userid");
-        //creating a new hidden form field
-       out.println("<form action='Dashboard' method='post'>");
-       out.println("<input type='hidden' name='userid' id='userid' value='"+userId+"'>");
-       out.println("<input type='submit' value='submit' >");
-       out.println("</form>");
-       out.println("<script>document.forms[0].submit();</script>");
+	    String userId = request.getParameter("userid");
+        response.sendRedirect("Dashboard?userid=" + userId);  
 }
 
 	/**
