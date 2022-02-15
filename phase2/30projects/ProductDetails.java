@@ -1,11 +1,10 @@
 
-
-import java.beans.Statement;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
 import javax.servlet.ServletException;
@@ -13,7 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 
 @WebServlet("/ProductDetails")
 public class ProductDetails extends HttpServlet {
@@ -28,21 +26,17 @@ public class ProductDetails extends HttpServlet {
                 Properties props = new Properties();
                 props.load(in);
                 
-                
                 DBConnection conn = new DBConnection(props.getProperty("url"), props.getProperty("userid"), props.getProperty("password"));
-                java.sql.Statement stmt = conn.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                Statement stmt = conn.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
                 stmt.executeUpdate("insert into eproduct (name, price, date_added) values ('New Product', 17800.00, now())");
-                out.println("Executed an insert operation<br>");
+                ResultSet rst = stmt.executeQuery("select * from eproduct");
                 
-                stmt.executeUpdate("update eproduct set price=2000 where name = 'New Product'");
-                out.println("Executed an update operation<br>");
-                
-                stmt.executeUpdate("delete from eproduct where name = 'New Product'");
-                out.println("Executed a delete operation<br>");
+                while (rst.next()) {
+                        out.println(rst.getInt("ID") + ", " + rst.getString("name") + "<Br>");
+                }
                 
                 stmt.close();
                 
-                conn.closeConnection();
                 
                 
                 out.println("</body></html>");
@@ -55,11 +49,12 @@ public class ProductDetails extends HttpServlet {
         }
 }
 
-
+/**
+ * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+ */
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
         doGet(request, response);
 }
 
 }
-
