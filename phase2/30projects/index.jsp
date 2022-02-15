@@ -4,18 +4,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>JSP Session</title>
+<title>Simple JSP</title>
 </head>
 <body>
 <%
-if(request.getParameter("error")!=null){
-	out.println("<b>Your Session has expired or Invalid</b><br>");
-}
+        out.println("<h2>My first JSP page.</h2><br>");
+        out.println("<h3>Hello Afzal How are you.</h3>");
 %>
-<form action="login.jsp" method="post">
-Name<input name = "name" id="jhony" maxlength="40" placeholder="User Name"><br>
-Password <input type="password" name="pwd" id="honey@123" maxlength="10" placeholder="Password"><br>
-<input type="submit" value="Login">
-</form>
+
 </body>
 </html>
