@@ -11,3 +11,4 @@
     <property name="connection.password">mysql password</property>
   </session-factory>
 </hibernate-configuration>
+
