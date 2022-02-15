@@ -1,82 +1,65 @@
 
 
-
+import java.beans.Statement;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Properties;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.*;
-import javax.xml.bind.*;
-
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import com.ecommerce.EProduct;
-import com.ecommerce.HibernateUtil;
-import com.ecommerce.ProductParts;
-
-
-
 
 
 @WebServlet("/ProductDetails")
 public class ProductDetails extends HttpServlet {
-	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         // TODO Auto-generated method stub
-          try {
-                 SessionFactory factory = HibernateUtil.getSessionFactory();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        
+        try {
+                 PrintWriter out = response.getWriter();
+                 out.println("<html><body>");
                  
-                 Session session = factory.openSession();
-                 
-                 
-                  
-                 List<EProduct> list = session.createQuery("from EProduct").list();
-                 
-                  PrintWriter out = response.getWriter();
-                  out.println("<html><body>");
-                  
-                  out.println("<b>Component Mapping</b><br>");
-                  for(EProduct p: list) {
-                          out.println("ID: " + String.valueOf(p.getID()) + ", Name: " + p.getName() +
-                                          ", Price: " + String.valueOf(p.getPrice()) + ", Date Added: " + p.getDateAdded().toString());
-                          ProductParts parts = ((HttpServletRequest) p).getParts();
-                          out.println("Parts =" + parts.getCpu() + ", " + parts.getHdd() + ", " + parts.getRam());
-                          out.println("<hr>");
-                  }
-                  
-                         session.close();
+                InputStream in = getServletContext().getResourceAsStream("/WEB-INF/config.properties");
+                Properties props = new Properties();
+                props.load(in);
+                
+                
+                DBConnection conn = new DBConnection(props.getProperty("url"), props.getProperty("userid"), props.getProperty("password"));
+                java.sql.Statement stmt = conn.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                stmt.executeUpdate("insert into eproduct (name, price, date_added) values ('New Product', 17800.00, now())");
+                out.println("Executed an insert operation<br>");
+                
+                stmt.executeUpdate("update eproduct set price=2000 where name = 'New Product'");
+                out.println("Executed an update operation<br>");
+                
+                stmt.executeUpdate("delete from eproduct where name = 'New Product'");
+                out.println("Executed a delete operation<br>");
+                
+                stmt.close();
+                
+                conn.closeConnection();
+                
+                
+                out.println("</body></html>");
+                conn.closeConnection();
+                
+        } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }
+}
 
-              out.println("</body></html>");
-              
-              
-          } catch (Exception ex) {
-                  throw ex;
-          }
-             
- }
 
- /**
-  * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-  */
- protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         // TODO Auto-generated method stub
-         doGet(request, response);
- }
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet(request, response);
+}
 
 }
 
